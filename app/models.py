@@ -99,7 +99,6 @@ class Flight(db.Model):
 
     id = Column(String(10), primary_key=True)
     name = Column(String(50), nullable=False)
-    image = Column(String(100))
     departing_at = Column(DateTime, nullable=False)
     arriving_at = Column(DateTime, nullable=False)
 
@@ -275,13 +274,13 @@ if __name__ == '__main__':
         db.session.add_all([al1, al2, al3, al4, al5])
         db.session.commit()
 
-        f1 = Flight(id='CB1', name='Chuyến bay 001',image='static/image/1.jpg'   , departing_at=datetime(2022, 12, 1, 13, 00, 00),
+        f1 = Flight(id='CB1', name='Chuyến bay 001'  , departing_at=datetime(2022, 12, 1, 13, 00, 00),
                     arriving_at=datetime(2022, 12, 1, 14, 00, 00), plane_id='MB1', airline_id='1')
-        f2 = Flight(id='CB2', name='Chuyến bay 002',image='static/image/1.jpg'   , departing_at=datetime(2022, 12, 1, 18, 00, 00),
+        f2 = Flight(id='CB2', name='Chuyến bay 002'   , departing_at=datetime(2022, 12, 1, 18, 00, 00),
                     arriving_at=datetime(2022, 12, 1, 19, 00, 00), plane_id='MB2', airline_id='2')
-        f3 = Flight(id='CB3', name='Chuyến bay 003', image='static/image/1.jpg'   ,departing_at=datetime(2022, 12, 1, 9, 00, 00),
+        f3 = Flight(id='CB3', name='Chuyến bay 003'   ,departing_at=datetime(2022, 12, 1, 9, 00, 00),
                     arriving_at=datetime(2022, 12, 1, 9, 50, 00), plane_id='MB3', airline_id='3')
-        f4 = Flight(id='CB4', name='Chuyến bay 004', image='static/image/1.jpg'   ,departing_at=datetime(2022, 12, 11, 9, 00, 00),
+        f4 = Flight(id='CB4', name='Chuyến bay 004'   ,departing_at=datetime(2022, 12, 11, 9, 00, 00),
                     arriving_at=datetime(2022, 12, 11, 18, 50, 00), plane_id='MB2', airline_id='3')
         db.session.add_all([f1, f2, f3, f4])
         db.session.commit()

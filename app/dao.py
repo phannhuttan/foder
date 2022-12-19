@@ -370,3 +370,18 @@ def load_search_airport(kw=None, from_airport_id=None, to_airport_id=None):
         query = query.filter(AirPort.id.__eq__(to_airport_id))
 
     return query.all()
+
+
+def statistic_revenue_follow_month(airline_name=None, date=None):
+    stats = db.session.query(AirLine.id, AirLine.name, func.sum(PlaneTicket.price), func.count(Flight.id.distinct())) \
+        .join(Flight, Flight.airline_id.__eq__(AirLine.id), isouter=True) \
+        .join(PlaneTicket, PlaneTicket.flight_id.__eq__(Flight.id), isouter=True) \
+        .group_by(AirLine.id, AirLine.name)
+
+    if airline_name and date:
+        date = datetime.strptime(date, "%Y-%m")
+        stats = stats.filter(AirLine.name.contains(airline_name))
+        stats = stats.filter(extract('year', PlaneTicket.date) == date.year,
+                             extract('month', PlaneTicket.date) == date.month)
+
+    return stats.all()

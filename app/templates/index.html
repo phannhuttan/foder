@@ -6,12 +6,16 @@
     {% for f in flights %}
     <div class="col-md-3 col-sm-12" style="padding:1rem;">
         <div class="card">
-            <img class="card-img-top style="height=350px"; src="{{ f.image }}" alt="{{ f.name }}">
+            <img class="card-img-top style=" height=350px"; src="{{ f.airlines.from_airport.image }}"
+                 alt="{{ f.airlines.from_airport.image }}">
             <div class="card-body">
-                <h4 class="card-title">{{ f.name }}</h4>
-                 <h4 class=>{{ f.departing_at }}</h4>
-                <p class="card-text">{{ f.arriving_at }}</p>
+                <h1 class="card-title">{{ f.airlines.from_airport.location }}</h1>
+                <h4 class="card-title">{{ f.airlines.name }}</h4>
+                <h4 class=> {{ f.departing_at }}</h4>
+                <H4 class="card-text"> {{ f.arriving_at }}</H4>
                 <a href="/flight/{ flight_id }" class="btn btn-primary">Xem chi tiết</a>
+                <a href="/flight/{ flight_id }" class="btn btn-primary">Xem chi tiết</a>
+
             </div>
         </div>
     </div>

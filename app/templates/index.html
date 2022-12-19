@@ -1,0 +1,25 @@
+{% extends 'layout/base.html' %}
+{% block content %}
+
+{% if flights %}
+<div class="row">
+    {% for f in flights %}
+    <div class="col-md-3 col-sm-12" style="padding:1rem;">
+        <div class="card">
+            <img class="card-img-top style="height=350px"; src="{{ f.image }}" alt="{{ f.name }}">
+            <div class="card-body">
+                <h4 class="card-title">{{ f.name }}</h4>
+                 <h4 class=>{{ f.departing_at }}</h4>
+                <p class="card-text">{{ f.arriving_at }}</p>
+                <a href="/flight/{ flight_id }" class="btn btn-primary">Xem chi tiết</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p class="text-danger">Không có sản phẩm nào!</p>
+{% endif %}
+
+{% endblock %}
+

@@ -1,0 +1,33 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+<h1 class="text-center text-success">Thông tin chi tiết chuyến bay</h1>
+
+<div class="detail-flight">
+
+
+        <div class="col-md-8 col-sm-6">
+            <h1>{{ flight.name }}</h1>
+            <p>Tuyến bay: {{ flight.airlines.name }}</p>
+            <p>Khởi hành tại: {{ flight.airlines.from_airport.name }}</p>
+            <p>Thời gian đi: {{ flight.departing_at }}</p>
+            <p>Thời gian đến: {{ flight.arriving_at }}</p>
+            <p>Hãng bay: {{ flight.planes.manufacturer }}</p>
+
+            {%if Flight_AirportMedium  %}
+                {% for m in Flight_AirportMedium %}
+                    <hr>
+                    <p>Tên trạm dừng: {{m}}</p>
+                    <p>Dừng tại: {{m.airports.name}}</p>
+                    <p>Thông báo: {{m.description}}</p>
+                {% endfor %}
+            {%else%}
+                <p>Bay thẳng </p>
+            {% endif%}
+            <hr>
+
+
+        </div>
+    </div>
+</div>
+{% endblock %}
